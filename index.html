@@ -5,72 +5,147 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
+
   <title>Frontend Mentor | Multi-step form</title>
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   <style>
     .attribution { font-size: 11px; text-align: center; }
     .attribution a { color: hsl(228, 45%, 44%); }
+    /* CSS */
+
   </style>
 </head>
 <body>
-
-  <!-- Sidebar start -->
-
-  Step 1
-  Your info
-
-  Step 2
-  Select plan
-
-  Step 3
-  Add-ons
-
-  Step 4
-  Summary
-
+  <div class="form-container">
+     <!-- Sidebar start -->
+    <div class="step-sidebar">
+      <div class="steps step-1">
+        <p>1</p>
+        <span>
+          <p>Step 1</p>
+          <p>Your info</p>
+        </span>
+      </div>
+      <div class="steps step-2">
+        <p>2</p>
+        <span>
+          <p>Step 2</p>
+          <p>Select plan</p>
+        </span>
+      </div>
+      <div class="steps step-3">
+        <p>3</p>
+        <span>
+          <p>Step 3</p>
+          <p> Add-ons</p>
+        </span>
+      </div>
+      <div class="steps step-4">
+        <p>1</p>
+        <span>
+          <p>Step 4</p>
+          <p>Summary</p>
+        </span>
+      </div>
+    </div>
   <!-- Sidebar end -->
+    <div class="form-panel">
+       <div id="step-1">
+        <!-- Step 1 start -->
 
-  <!-- Step 1 start -->
+  <h1>Personal info</h1>
+  <p>Please provide your name, email address, and phone number.</p>
 
-  Personal info
-  Please provide your name, email address, and phone number.
+  <form id="personalInfo">
+    <label for="person-name">Name</label>
+    <input type="text" name="person-name" id="person-name" placeholder="e.g. Stephen King" required>
 
-  Name
-  e.g. Stephen King
+  <label for="email"></label>
+  <input type="email" name="email" id="email" placeholder="e.g. stephenking@lorem.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
 
-  Email Address
-  e.g. stephenking@lorem.com
-
-  Phone Number
-  e.g. +1 234 567 890
-
-  Next Step
-
+  <label for="phone">Phone Number</label>
+  <input type="text" name="phone" id="phone" placeholder="e.g. +1 234 567 890" pattern="\+\d{1,3} \d{3} \d{3} \d{3}" required>
+  </form>
   <!-- Step 1 end -->
+       </div>
+       <div id="step-2">
+        <!-- Step 2 start -->
+        <h1>Select your plan</h1>
+  <p>You have the option of monthly or yearly billing.</p>
 
-  <!-- Step 2 start -->
+    <div class="plans">
+      <div class="option">
+        <input type="radio" id="arcade" name="plan" value="arcade">
+        <label for="arcade">
+          <div class="option-icon">
+            <img src="./assets/images/icon-arcade.svg" alt="arcade">
+          </div>
+          <span>Arcade</span>
+          <span>$9/mo</span>
+        </label>
+      </div>
 
-  Select your plan
-  You have the option of monthly or yearly billing.
+      <div class="option">
+        <input type="radio" id="advanced" name="plan" value="advanced">
+        <label for="advanced">
+          <div class="option-icon">
+            <img src="./assets/images/icon-advanced.svg" alt="advanced">
+          </div>
+          <span>Advanced</span>
+          <span>$12/mo</span>
+        </label>
+      </div>
 
-  Arcade
-  $9/mo
+      <div class="option">
+        <input type="radio" id="pro" name="plan" value="pro">
+        <label for="pro">
+          <div class="option-icon">
+            <img src="./assets/images/icon-pro.svg" alt="pro">
+          </div>
+          <span>Pro</span>
+          <span>$15/mo</span>
+        </label>
+      </div>
+    </div>
 
-  Advanced
-  $12/mo
+    <div class="billing">
+      <p>Monthly</p>
+      <label class="switch">
+        <input type="checkbox">
+        <span class="slider round"></span>
+      </label>
+      <p>Yearly</p>
+    </div>
+        <!-- Step 2 end -->
+       </div>
 
-  Pro
-  $15/mo
+       <div id="step-3">
+        <!-- Step 3 start -->
+        <h1>Pick add-ons</h1>
+        <p>Add-ons help enhance your gaming experience.</p>
+        <div class="add-on-options">
+          <div class="option">
+            <input type="checkbox" id="online-service" name="online-service" value="online-service">
+            <label for="online-service">
+              Online service
+            </label>
+            <span>Access to multiplayer games</span>
+            <span id="add-on-price"></span>
+          </div>
+          
+        </div>
+       </div>
+       <div id="step-4"></div>
+    </div>
+    <div class="panel-btns">
+      <button class="btn btn-prev">Go Back</button>
+      <button class="btn btn-next">Next Step</button>
+    </div>
+  </div>
 
-  Monthly
-  Yearly
 
-  Go Back
-  Next Step
 
-  <!-- Step 2 end -->
 
   <!-- Step 3 start -->
 
@@ -112,14 +187,14 @@
 
   Thank you!
 
-  Thanks for confirming your subscription! We hope you have fun 
-  using our platform. If you ever need support, please feel free 
+  Thanks for confirming your subscription! We hope you have fun
+  using our platform. If you ever need support, please feel free
   to email us at support@loremgaming.com.
 
   <!-- Step 5 end -->
-  
+
   <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
     Coded by <a href="#">Your Name Here</a>.
   </div>
 </body>
