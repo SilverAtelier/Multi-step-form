@@ -543,8 +543,14 @@ html p {
   color: var(--cool-gray);
   margin-top: 20px;
 }
-input:required:invalid {
-  border: 1px solid var(--strawberry-red);
+.error {
+  border: 1px solid var(--strawberry-red) !important;
+}
+.error-message{
+  color: var(--strawberry-red) !important;
+  float: right;
+  font-size: 12px;
+  font-weight: var(--font-weight-lg);
 }
 .hidden {
   display: none;
