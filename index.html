@@ -11,9 +11,11 @@
       sizes="32x32"
       href="./assets/images/favicon-32x32.png" />
     <link rel="stylesheet" href="./styles/index.css" />
-    <script src="./styles/change-billing.js" defer></script>
-    <script src="./styles/change-add-on-bg.js" defer></script>
-    <script src="./js/navigation.js" defer></script>
+    <script type="module" src="./styles/change-billing.js" defer></script>
+    <script type="module" src="./styles/change-add-on-bg.js" defer></script>
+    <script type="module" src="./js/navigation.js" defer></script>
+    <script type="module" src="./js/formValidation.js" defer></script>
+    <script type="module" src="./js/formData.js" defer></script>
 
     <title>Frontend Mentor | Multi-step form</title>
 
@@ -67,7 +69,7 @@
       <!-- Sidebar end -->
 
       <div class="form-panel">
-        <form>
+        <form action="" id="payment" enctype="multipart/form-data">
           <!-- Step 1 start -->
           <div id="step-1" class="active">
             <h1>Personal info</h1>
@@ -76,7 +78,7 @@
             </p>
 
             <div id="personalInfo">
-              <label for="person-name">Name</label>
+              <label for="person-name" id="name-label">Name</label>
               <input
                 type="text"
                 name="person-name"
@@ -84,16 +86,15 @@
                 placeholder="e.g. Stephen King"
                 required />
 
-              <label for="email">Email Address</label>
+              <label for="email" id="email-label">Email Address</label>
               <input
                 type="email"
                 name="email"
                 id="email"
                 placeholder="e.g. stephenking@lorem.com"
-                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                 required />
 
-              <label for="phone">Phone Number</label>
+              <label for="phone" id="phone-label">Phone Number</label>
               <input
                 type="text"
                 name="phone"
@@ -112,7 +113,7 @@
 
             <div class="plans">
               <div class="option">
-                <input type="radio" id="arcade" name="plan" value="arcade" />
+                <input type="radio" id="arcade" name="plan" value="arcade" required/>
                 <label for="arcade">
                   <div class="option-icon">
                     <img src="./assets/images/icon-arcade.svg" alt="arcade" />
@@ -241,7 +242,7 @@
             </p>
             <div class="summary">
               <div class="plan-summary">
-                <span id="plan-type">Arcade (Monthly)<button id="change-link">
+                <span id="plan-type">Arcade (Monthly)<button type="button" id="change-link">
                     Change
                   </button></span>
                 <span id="plan-price">+$9/mo</span>
@@ -285,9 +286,9 @@
         </div>
         <!-- Step 5 end -->
         <div class="panel-btns">
-          <button class="btn-prev">Go Back</button>
-          <button class="btn btn-next">Next Step</button>
-          <button type="submit" id="confirm" class="btn">Confirm</button>
+          <button type="button" class="btn-prev">Go Back</button>
+          <button type="button" class="btn btn-next">Next Step</button>
+          <button type="submit" id="confirm" class="btn" >Confirm</button>
         </div>
       </div>
     </div>
