@@ -9,10 +9,11 @@
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="./assets/images/favicon-32x32.png"
-    />
+      href="./assets/images/favicon-32x32.png" />
     <link rel="stylesheet" href="./styles/index.css" />
     <script src="./styles/change-billing.js" defer></script>
+    <script src="./styles/change-add-on-bg.js" defer></script>
+    <script src="./js/navigation.js" defer></script>
 
     <title>Frontend Mentor | Multi-step form</title>
 
@@ -35,14 +36,14 @@
       <!-- Sidebar start -->
       <div class="step-sidebar">
         <div class="steps step-1">
-          <p class="step-num">1</p>
+          <p class="step-num selected">1</p>
           <span>
             <p>Step 1</p>
             <p>Your info</p>
           </span>
         </div>
         <div class="steps step-2">
-          <p class="step-num selected">2</p>
+          <p class="step-num">2</p>
           <span>
             <p>Step 2</p>
             <p>Select plan</p>
@@ -68,9 +69,11 @@
       <div class="form-panel">
         <form>
           <!-- Step 1 start -->
-          <div id="step-1">
+          <div id="step-1" class="active">
             <h1>Personal info</h1>
-            <p class="sub">Please provide your name, email address, and phone number.</p>
+            <p class="sub">
+              Please provide your name, email address, and phone number.
+            </p>
 
             <div id="personalInfo">
               <label for="person-name">Name</label>
@@ -79,8 +82,7 @@
                 name="person-name"
                 id="person-name"
                 placeholder="e.g. Stephen King"
-                required
-              />
+                required />
 
               <label for="email">Email Address</label>
               <input
@@ -89,8 +91,7 @@
                 id="email"
                 placeholder="e.g. stephenking@lorem.com"
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                required
-              />
+                required />
 
               <label for="phone">Phone Number</label>
               <input
@@ -99,14 +100,13 @@
                 id="phone"
                 placeholder="e.g. +1 234 567 890"
                 pattern="\+\d{1,3} \d{3} \d{3} \d{3}"
-                required
-              />
+                required />
             </div>
           </div>
           <!-- Step 1 end -->
 
           <!-- Step 2 start -->
-          <div id="step-2" class="active">
+          <div id="step-2">
             <h1>Select your plan</h1>
             <p class="sub">You have the option of monthly or yearly billing.</p>
 
@@ -129,14 +129,12 @@
                   type="radio"
                   id="advanced"
                   name="plan"
-                  value="advanced"
-                />
+                  value="advanced" />
                 <label for="advanced">
                   <div class="option-icon">
                     <img
                       src="./assets/images/icon-advanced.svg"
-                      alt="advanced"
-                    />
+                      alt="advanced" />
                   </div>
                   <div class="option-info">
                     <p>Advanced</p>
@@ -160,13 +158,26 @@
             </div>
 
             <div class="billing">
-              <label id="monthly-billing-label" for="monthly-billing" class="selected-billing">Monthly</label>
+              <label
+                id="monthly-billing-label"
+                for="monthly-billing"
+                class="selected-billing">Monthly</label>
               <div class="switch">
-                <input type="radio" id="monthly-billing" value="monthly" name="billing" checked/>
-                <input type="radio" id="yearly-billing" value="yearly" name="billing">
+                <input
+                  type="radio"
+                  id="monthly-billing"
+                  value="monthly"
+                  name="billing"
+                  checked />
+                <input
+                  type="radio"
+                  id="yearly-billing"
+                  value="yearly"
+                  name="billing" />
                 <span class="slider round"></span>
               </div>
-              <label id="yearly-billing-label" for="yearly-billing">Yearly</label>
+              <label id="yearly-billing-label"
+                for="yearly-billing">Yearly</label>
             </div>
           </div>
           <!-- Step 2 end -->
@@ -176,16 +187,47 @@
             <h1>Pick add-ons</h1>
             <p class="sub">Add-ons help enhance your gaming experience.</p>
             <div class="add-on-options">
-              <div class="option">
+              <div class="add-on-option" id="online-option">
                 <input
                   type="checkbox"
                   id="online-service"
                   name="online-service"
-                  value="online-service"
-                />
-                <label for="online-service"> Online service </label>
-                <span>Access to multiplayer games</span>
-                <span id="add-on-price">$00</span>
+                  value="online-service" />
+                <div class="add-on-info">
+                  <label for="online-service">
+                    Online service
+                    <span>Access to multiplayer games</span>
+                  </label>
+                </div>
+                <span id="add-on-price">+$1/mo</span>
+              </div>
+              <div class="add-on-option" id="storage-option">
+                <input
+                  type="checkbox"
+                  id="large-storage"
+                  name="large-storage"
+                  value="large-storage" />
+                <div class="add-on-info">
+                  <label for="large-storage">
+                    Large storage
+                    <span>Extra 1TB of cloud save</span>
+                  </label>
+                </div>
+                <span id="add-on-price">+$2/mo</span>
+              </div>
+              <div class="add-on-option" id="customization-option">
+                <input
+                  type="checkbox"
+                  id="customization"
+                  name="customization"
+                  value="customization" />
+                <div class="add-on-info">
+                  <label for="customization">
+                    Customizable profile
+                    <span>Custo theme on your profile</span>
+                  </label>
+                </div>
+                <span id="add-on-price">+$2/mo</span>
               </div>
             </div>
           </div>
@@ -194,9 +236,34 @@
           <!-- Step 4 start -->
           <div id="step-4">
             <h1>Finishing up</h1>
-            <p class="sub">Double-check everything looks OK before confirming.</p>
+            <p class="sub">
+              Double-check everything looks OK before confirming.
+            </p>
             <div class="summary">
-              <!-- ... content ... -->
+              <div class="plan-summary">
+                <span id="plan-type">Arcade (Monthly)<button id="change-link">
+                    Change
+                  </button></span>
+                <span id="plan-price">+$9/mo</span>
+              </div>
+              <div class="add-on-summary">
+                <div class="add-on-summary-item">
+                  <span class="add-on-type">Online service</span>
+                  <span class="add-on-price">+$1/mo</span>
+                </div>
+                <div class="add-on-summary-item">
+                  <span class="add-on-type">Large storage</span>
+                  <span class="add-on-price">+$2/mo</span>
+                </div>
+                <div class="add-on-summary-item">
+                  <span class="add-on-type">Customizable profile</span>
+                  <span class="add-on-price">+$2/mo</span>
+                </div>
+              </div>
+              <div class="total">
+                <span>Total (per month)</span>
+                <span id="total-price">+$12/mo</span>
+              </div>
             </div>
           </div>
           <!-- Step 4 end -->
@@ -204,12 +271,17 @@
 
         <!-- Step 5 start -->
         <div id="step-5">
-          <h1>Thank you!</h1>
-          <p>
-            Thanks for confirming your subscription! We hope you have fun using
-            our platform. If you ever need support, please feel free to email us
-            at support@loremgaming.com.
-          </p>
+          <div class="step-5-container">
+            <div class="step5-icon">
+              <img src="./assets/images/icon-thank-you.svg" alt="check" />
+            </div>
+            <h1>Thank you!</h1>
+            <p>
+              Thanks for confirming your subscription! We hope you have fun using
+              our platform. If you ever need support, please feel free to email us
+              at support@loremgaming.com.
+            </p>
+          </div>
         </div>
         <!-- Step 5 end -->
         <div class="panel-btns">
@@ -222,9 +294,8 @@
     <div class="attribution">
       Challenge by<a
         href="https://www.frontendmentor.io?ref=challenge"
-        target="_blank"
-        >Frontend Mentor</a
-      >. Coded by <a href="https://x.com/silver_atelier">SilverAtelier</a>.
+        target="_blank">Frontend Mentor</a>. Coded by <a
+        href="https://x.com/silver_atelier">SilverAtelier</a>.
     </div>
   </body>
 </html>
