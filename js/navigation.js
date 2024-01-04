@@ -1,3 +1,6 @@
+import  validate  from './formValidation.js';
+
+//form navigation
 const step1 = document.getElementById('step-1');
 const step2 = document.getElementById('step-2');
 const step3 = document.getElementById('step-3');
@@ -6,29 +9,26 @@ const step5 = document.getElementById('step-5');
 
 const navSteps = document.querySelectorAll('.step-num');
 
-const panelBtns = document.querySelector('.panel-btn');
-
 const confirmBtn = document.getElementById('confirm');
 const backBtn = document.querySelector('.btn-prev');
 const nextBtn = document.querySelector('.btn-next');
 
 const steps = [step1, step2, step3, step4, step5];
 
+const changeBtn = document.getElementById('change-link');
+
 let currentStepIndex = 0;
 
-const removeActive = () => {
-    steps.forEach(step => {
-        if (step.classList.contains('active')) {
-            step.classList.remove('active');
+const moveNext = () => {
+    if (currentStepIndex === 0) {
+        if (!validate()) {
             return;
         }
-        return;
-    });
-}
-const moveNext = () => {
+    }
     steps[currentStepIndex].classList.remove('active');
     currentStepIndex++;
     steps[currentStepIndex].classList.add('active');
+
     if (currentStepIndex > 0) {
         backBtn.classList.remove('hidden');
     }
@@ -39,20 +39,23 @@ const moveNext = () => {
         nextBtn.remove();
         backBtn.remove();
         confirmBtn.remove();
+        navSteps.item(currentStepIndex-1).classList.add('selected');
     }
     if (currentStepIndex === 3) {
         confirmBtn.classList.remove('hidden');
         nextBtn.classList.add('hidden');
     }
-    navSteps[currentStepIndex].classList.add('selected');
-    navSteps[currentStepIndex - 1]?.classList.remove('selected');
+    if (navSteps[currentStepIndex]){
+        navSteps[currentStepIndex].classList.add('selected');
+    }
+    if (currentStepIndex !== 4){
+        navSteps[currentStepIndex - 1]?.classList.remove('selected');
+    }
 }
 
 const moveBack = () => {
-    console.log(currentStepIndex);
     steps[currentStepIndex].classList.remove('active');
     currentStepIndex--;
-    console.log(currentStepIndex);
     steps[currentStepIndex].classList.add('active');
     if (currentStepIndex === 0) {
         backBtn.classList.add('hidden');
@@ -65,19 +68,24 @@ const moveBack = () => {
     navSteps[currentStepIndex + 1]?.classList.remove('selected');
 }
 
-nextBtn.addEventListener('click', moveNext);
-backBtn.addEventListener('click', moveBack);
-
 if (steps[0].classList.contains('active')) {
     backBtn.classList.add('hidden');
 }
-if (step5.classList.contains('active')){
-    console.log('hello')
-}
+
 confirmBtn.classList.add('hidden');
-confirmBtn.addEventListener('click', () => {
-    // window.location.href = 'success.html';
-    moveNext();
+
+nextBtn.addEventListener('click', moveNext);
+backBtn.addEventListener('click', moveBack);
+changeBtn.addEventListener('click', ()=>{
+    steps[currentStepIndex].classList.remove('active');
+    navSteps[currentStepIndex]?.classList.remove('selected');
+    currentStepIndex = 1;
+    steps[currentStepIndex].classList.add('active');
+    nextBtn.classList.remove('hidden');
+    confirmBtn.classList.add('hidden');
+    navSteps[currentStepIndex].classList.add('selected');
+    navSteps[currentStepIndex + 1]?.classList.remove('selected');
 });
 
-console.log(steps[4])
+export { moveNext, confirmBtn };
+
