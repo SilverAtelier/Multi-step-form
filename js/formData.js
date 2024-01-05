@@ -204,7 +204,7 @@ confirmBtn.addEventListener('click', () => {
     // window.location.href = 'success.html'; -> redirect to success page if needed
     const data = JSON.stringify(appendData());
     moveNext();
-    fetch('http://localhost:3000/data', { // Post data to server
+    fetch('http://url/endpoint', { // Post data to server-> replaced with appropriate url
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
