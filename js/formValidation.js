@@ -1,8 +1,5 @@
 //personal info validation
-
-const nameField = document.getElementById('person-name');
-const emailField = document.getElementById('email');
-const phoneField = document.getElementById('phone');
+import { nameField, emailField, phoneField } from "./formFields.js";
 
 const pattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}(?:\.[a-z]{2,})?$/;
 
@@ -16,7 +13,7 @@ export default function validatePersonalInfo() {
         err.classList.add('error-message');
         err.textContent = message;
         document.getElementById(element_id).appendChild(err);
-        field.reportValidity();
+        // field.reportValidity();
         valid = false;
     }
     const removeError = (field, element_id) => {
