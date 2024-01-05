@@ -558,6 +558,6 @@ html p {
 .discount{
   color: var(--marine-blue);
   font-weight:var(--font-weight-md);
-  font-size: 12px;
+  font-size: 10px;
   margin-top: 5px;
 }
