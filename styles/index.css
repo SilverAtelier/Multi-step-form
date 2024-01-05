@@ -230,7 +230,7 @@ html p {
 .option > label > .option-info p:nth-child(2){
   color: var(--cool-gray);
   font-weight:var(--font-weight-md);
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .option:hover {
@@ -382,6 +382,11 @@ html p {
   font-size: 12px;
   margin-top: 5px;
 }
+.add-on-summary-item .add-on-price{
+  color: var(--marine-blue);
+  font-weight:var(--font-weight-md);
+  font-size: 14px;
+}
 .summary{
   display: flex;
   flex-direction: column;
@@ -441,9 +446,9 @@ html p {
   font-size: 12px;
 }
 .add-on-price{
-  color: var(--marine-blue);
+  color: var(--purplish-blue);
   font-weight:var(--font-weight-md);
-  font-size: 12px;
+  font-size: 14px;
 }
 .total{
   display: flex;
@@ -553,6 +558,6 @@ html p {
 .discount{
   color: var(--marine-blue);
   font-weight:var(--font-weight-md);
-  font-size: 10px;
+  font-size: 12px;
   margin-top: 5px;
 }
