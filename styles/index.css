@@ -430,7 +430,7 @@ html p {
 #plan-price{
   color: var(--marine-blue);
   font-weight:var(--font-weight-lg);
-  font-size: 14px;
+  font-size: 12px;
 }
 .add-on-summary-item{
   display: flex;
