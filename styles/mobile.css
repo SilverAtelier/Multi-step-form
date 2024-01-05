@@ -99,4 +99,7 @@
   .attribution {
     display: none;
   }
+  .discount{
+    font-size: 12px;
+  }
 }
