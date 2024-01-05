@@ -1,28 +1,28 @@
 export const dataObj = {
     monthly: {
         plan: {
-            arcade: '9/mo',
-            advanced: '12/mo',
-            pro: '15/mo'
+            arcade: 9,
+            advanced: 12,
+            pro: 15
         },
         addOn: {
-            onlineService: '1/mo',
-            cloudStorage: '2/mo',
-            profile: '2/mo'
+            onlineService: 1,
+            cloudStorage: 2,
+            profile: 2
         },
-        discount: '0'
+        discount: 0
     },
     yearly: {
         plan: {
-            arcade: '90/yr',
-            advanced: '120/yr',
-            pro: '150/yr'
+            arcade: 90,
+            advanced: 120,
+            pro: 150
         },
         addOn: {
-            onlineService: '10/yr',
-            cloudStorage: '20/yr',
-            profile: '20/yr'
+            onlineService: 10,
+            cloudStorage: 20,
+            profile: 20
         },
-        discount: '2'
+        discount: 2
     }
 }
