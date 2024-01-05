@@ -1,4 +1,5 @@
-import  validate  from './formValidation.js';
+import validate from './formValidation.js';
+
 
 //form navigation
 const step1 = document.getElementById('step-1');
@@ -19,6 +20,13 @@ const changeBtn = document.getElementById('change-link');
 
 let currentStepIndex = 0;
 
+/**
+ * Moves to the next step in the multi-step form.
+ * If the current step is the first step, it validates the form before proceeding.
+ * Updates the UI to reflect the current step.
+ * Hides or shows buttons based on the current step.
+ * Adds or removes the 'selected' class from the navigation steps.
+ */
 const moveNext = () => {
     if (currentStepIndex === 0) {
         if (!validate()) {
@@ -39,16 +47,16 @@ const moveNext = () => {
         nextBtn.remove();
         backBtn.remove();
         confirmBtn.remove();
-        navSteps.item(currentStepIndex-1).classList.add('selected');
+        navSteps.item(currentStepIndex - 1).classList.add('selected');
     }
     if (currentStepIndex === 3) {
         confirmBtn.classList.remove('hidden');
         nextBtn.classList.add('hidden');
     }
-    if (navSteps[currentStepIndex]){
+    if (navSteps[currentStepIndex]) {
         navSteps[currentStepIndex].classList.add('selected');
     }
-    if (currentStepIndex !== 4){
+    if (currentStepIndex !== 4) {
         navSteps[currentStepIndex - 1]?.classList.remove('selected');
     }
 }
@@ -68,15 +76,22 @@ const moveBack = () => {
     navSteps[currentStepIndex + 1]?.classList.remove('selected');
 }
 
+export const callbacks = (callback) => {
+    if (typeof callback === 'function') {
+        callback();
+    }
+    return;
+}
+
 if (steps[0].classList.contains('active')) {
     backBtn.classList.add('hidden');
 }
 
 confirmBtn.classList.add('hidden');
 
-nextBtn.addEventListener('click', moveNext);
+nextBtn.addEventListener('click', moveNext, callbacks);
 backBtn.addEventListener('click', moveBack);
-changeBtn.addEventListener('click', ()=>{
+changeBtn.addEventListener('click', () => {
     steps[currentStepIndex].classList.remove('active');
     navSteps[currentStepIndex]?.classList.remove('selected');
     currentStepIndex = 1;
