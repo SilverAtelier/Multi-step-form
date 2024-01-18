@@ -3,6 +3,7 @@
   html {
     background-color: var(--white);
     height: 100svh;
+    overflow: hidden;
   }
   body {
     position: relative;
@@ -96,10 +97,20 @@
     padding-top: 30px;
   }
   .panel-btns {
-    transform: translate(20%, 22svh);
+    position: absolute;
+    width: 100svw;
+    transform: translateY(15svh);
+    padding-left: 0;
+    padding-right: 10%;
+  }
+  .btn{
+    height: 45px;
+    font-size: 14px;
   }
   .btn-prev {
-    transform: translateX(-22svw);
+    height: 45px;
+    font-size: 16px;
+    transform: translateX(-20%);
   }
   .attribution {
     display: none;
