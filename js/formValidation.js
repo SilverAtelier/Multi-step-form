@@ -2,6 +2,25 @@
 import { nameField, emailField, phoneField } from "./formFields.js";
 
 const pattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}(?:\.[a-z]{2,})?$/;
+const removeError = (field, element_id) => {
+    field.classList.remove('error');
+    field.setCustomValidity('');
+    const errContainer = document.getElementById(element_id);
+    if (errContainer) {
+        errContainer.children[0]?.remove();
+    }
+}
+
+nameField.addEventListener('input', () => {
+    removeError(nameField, 'name-label');
+});
+emailField.addEventListener('input', () => {
+    removeError(emailField, 'email-label');
+});
+phoneField.addEventListener('input', () => {
+    removeError(phoneField, 'phone-label');
+});
+
 
 export default function validatePersonalInfo() {
     let valid = true;
@@ -15,14 +34,6 @@ export default function validatePersonalInfo() {
         document.getElementById(element_id).appendChild(err);
         // field.reportValidity();
         valid = false;
-    }
-    const removeError = (field, element_id) => {
-        field.classList.remove('error');
-        field.setCustomValidity('');
-        const errContainer = document.getElementById(element_id);
-        if (errContainer) {
-            errContainer.children[0]?.remove();
-        }
     }
     if (!nameField.checkValidity()) {
         removeError(nameField, 'name-label');
@@ -42,11 +53,25 @@ export default function validatePersonalInfo() {
     }
 
     if (!phoneField.checkValidity()) {
-        removeError(phoneField, 'phone-label');
-        createError(phoneField, 'Phone is required.', 'phone-label');
+        if (phoneField.value === '') {
+            removeError(phoneField, 'phone-label');
+            createError(phoneField, 'Phone is required.', 'phone-label');
+        } else {
+            removeError(phoneField, 'phone-label');
+            createError(phoneField, 'Invalid phone number.', 'phone-label');
+        }
     } else {
         removeError(phoneField, 'phone-label');
     }
-
+    //remove event listener
+    nameField.removeEventListener('input', () => {
+        removeError(nameField, 'name-label');
+    });
+    emailField.removeEventListener('input', () => {
+        removeError(emailField, 'email-label');
+    });
+    phoneField.removeEventListener('input', () => {
+        removeError(phoneField, 'phone-label');
+    });
     return valid;
 }
